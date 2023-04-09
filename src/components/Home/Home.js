@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { ReactTransliterate } from "react-transliterate";
 import "react-transliterate/dist/index.css";
-import { NetlifyForm } from 'react-netlify-forms'
 
 export default function Home() {
 
@@ -25,11 +24,11 @@ export default function Home() {
     const practiceWord1 = "चींटी"
     const practiceWord2 = "बैंक"
 
-    const realPractice1 = new Array('चींटी', 'बंदर', 'जहाज', 'हाथ', 'कुल्हाड़ी', 'बिल्ला', 'थैला', 'गेंद', 'बैंड', 'जूता', 'कटोरा', 'डिब्बा');
-    const realPractice2 = new Array('बैंक', 'खलिहान', 'बल्ला', 'स्नान', 'सागरतट', 'चोंच', 'सेम', 'भालू', 'बिस्तर', 'बादल', 'विदूषक', 'सिक्का');
+    const realPractice1 = ['चींटी', 'बंदर', 'जहाज', 'हाथ', 'कुल्हाड़ी', 'बिल्ला', 'थैला', 'गेंद', 'बैंड', 'जूता', 'कटोरा', 'डिब्बा'];
+    const realPractice2 = ['बैंक', 'खलिहान', 'बल्ला', 'स्नान', 'सागरतट', 'चोंच', 'सेम', 'भालू', 'बिस्तर', 'बादल', 'विदूषक', 'सिक्का'];
     
-    const probes = new Array('चींटी','खलिहान','बल्ला','हाथ','कुल्हाड़ी','चोंच','थैला','भालू','बैंड', 'जूता', 'विदूषक', 'डिब्बा');
-    const targets = new Array('बैंक','बंदर','जहाज','स्नान','सागरतट','बिल्ला','सेम','गेंद','बिस्तर', 'बादल', 'कटोरा', 'सिक्का');
+    const probes = ['चींटी','खलिहान','बल्ला','हाथ','कुल्हाड़ी','चोंच','थैला','भालू','बैंड', 'जूता', 'विदूषक', 'डिब्बा'];
+    const targets = ['बैंक','बंदर','जहाज','स्नान','सागरतट','बिल्ला','सेम','गेंद','बिस्तर', 'बादल', 'कटोरा', 'सिक्का'];
     
     const items = Array.from({ length: 6 }, (_, index) => index + 1);
     
@@ -169,7 +168,7 @@ export default function Home() {
 
     const nextWordRecall = () => {
 
-        if(currentState == 5){
+        if(currentState === 5){
             setResponses(oldArray => [...oldArray, text]);
             setText("")
             setCurrentState(currentState+1);
@@ -380,7 +379,7 @@ export default function Home() {
                     </> : ""}
 
                     {currentState === 15 ? 
-                    <form name="info" netlify>
+                    <form name="info" data-netlify="true">
                         Thank you for completing the experiment. Please note that your submission will only be counted once you submit this form. Please provide the following demographic information for reporting purposes.
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Gender</Form.Label>
