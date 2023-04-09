@@ -380,7 +380,7 @@ export default function Home() {
                     </> : ""}
 
                     {currentState === 15 ? 
-                    <NetlifyForm name='Contact' action='/thanks' honeypotName='bot-field'>
+                    <NetlifyForm name='info' action='/thanks'>
                         {({ handleChange, success, error }) => (
                         <>
                             {success && <p>Thanks for contacting us!</p>}
