@@ -1,0 +1,27 @@
+.instructions {
+    height: 90vh;
+    position: relative;
+}
+  
+.instructions p {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 200;
+}
+
+.subtitle {
+    color: grey;
+}
+
+.word-container{
+    font-size: 96px;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: green;
+    transition: width 0.5s ease-in-out;
+  }
