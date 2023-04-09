@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { ReactTransliterate } from "react-transliterate";
 import "react-transliterate/dist/index.css";
+import { NetlifyForm } from 'react-netlify-forms'
 
 export default function Home() {
 
@@ -185,22 +186,6 @@ export default function Home() {
         }
         
     }
-
-    const handleSubmit = (event) => {
-
-        event.preventDefault();
-
-        const form = event.target;
-        const formData = new FormData(form);
-
-        fetch('/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams(formData).toString(),
-        })
-            .then(() => alert("FORM SUBMITTED"))
-            .catch((error) => alert(error));
-      };
 
     return (
         <>
@@ -395,38 +380,48 @@ export default function Home() {
                     </> : ""}
 
                     {currentState === 15 ? 
-                    <form name="info" method="POST" data-netlify="true" netlify onSubmit={() => handleSubmit()}>
-                        Thank you for completing the experiment. Please note that your submission will only be counted once you submit this form. Please provide the following demographic information for reporting purposes.
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Gender</Form.Label>
-                            <Form.Control type="text" placeholder="Enter your Gender" />
-                        </Form.Group>
+                    <NetlifyForm name='Contact' action='/thanks' honeypotName='bot-field'>
+                        {({ handleChange, success, error }) => (
+                        <>
+                            {success && <p>Thanks for contacting us!</p>}
+                            {error && (
+                            <p>Sorry, we could not reach our servers. Please try again later.</p>
+                            )}
+                            <form name="info" method="POST">
+                                Thank you for completing the experiment. Please note that your submission will only be counted once you submit this form. Please provide the following demographic information for reporting purposes.
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>Gender</Form.Label>
+                                    <Form.Control type="text" placeholder="Enter your Gender" onChange={handleChange} />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Age</Form.Label>
-                            <Form.Control type="text" placeholder="Enter your Age" />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>Age</Form.Label>
+                                    <Form.Control type="text" placeholder="Enter your Age" onChange={handleChange} />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>What is/are the language(s) you are proficient in? (If multiple, seperate with commas)</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Languages" />
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>What is/are the language(s) you are proficient in? (If multiple, seperate with commas)</Form.Label>
+                                    <Form.Control type="text" placeholder="Enter Languages" onChange={handleChange} />
+                                </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Highest Level of Education (or Currently Pursuing) </Form.Label>
-                            <Form.Control type="text" placeholder="Highest Level of Education" />
-                            <Form.Text className="text-muted">
-                            We'll never share your information with anyone else.
-                            </Form.Text>
-                        </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>Highest Level of Education (or Currently Pursuing) </Form.Label>
+                                    <Form.Control type="text" placeholder="Highest Level of Education" onChange={handleChange} />
+                                    <Form.Text className="text-muted">
+                                    We'll never share your information with anyone else.
+                                    </Form.Text>
+                                </Form.Group>
 
-                        <input type="hidden" name="form-name" value="info" />
-                        <input type="text" value={mathQuestions} hidden/>
-                        <input type="text" value={mathResponses} hidden/>
-                        <input type="text" value={responses} hidden/>
-                        
-                        <button className="btn btn-primary" type="submit">Submit</button>
-                        </form>
+                                <input type="hidden" name="form-name" value="info" />
+                                <input type="text" value={mathQuestions} hidden/>
+                                <input type="text" value={mathResponses} hidden/>
+                                <input type="text" value={responses} hidden/>
+                                
+                                <button className="btn btn-primary" type="submit">Submit</button>
+                            </form>
+                        </>
+                        )}
+                        </NetlifyForm>
                     : ""}
                     
                 </p>
