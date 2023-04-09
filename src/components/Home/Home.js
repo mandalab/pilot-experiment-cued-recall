@@ -186,6 +186,22 @@ export default function Home() {
         
     }
 
+    const handleSubmit = (event) => {
+
+        event.preventDefault();
+
+        const form = event.target;
+        const formData = new FormData(form);
+
+        fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData).toString(),
+        })
+            .then(() => alert("FORM SUBMITTED"))
+            .catch((error) => alert(error));
+      };
+
     return (
         <>
             <div className='instructions'>
@@ -379,7 +395,7 @@ export default function Home() {
                     </> : ""}
 
                     {currentState === 15 ? 
-                    <form name="info" method="POST" data-netlify="true" netlify>
+                    <form name="info" method="POST" data-netlify="true" netlify onSubmit={() => handleSubmit()}>
                         Thank you for completing the experiment. Please note that your submission will only be counted once you submit this form. Please provide the following demographic information for reporting purposes.
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Gender</Form.Label>
