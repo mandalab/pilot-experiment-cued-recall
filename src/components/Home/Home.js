@@ -379,7 +379,7 @@ export default function Home() {
                     </> : ""}
 
                     {currentState === 15 ? 
-                    <form name="info" data-netlify="true">
+                    <form name="info" method="POST" data-netlify="true">
                         Thank you for completing the experiment. Please note that your submission will only be counted once you submit this form. Please provide the following demographic information for reporting purposes.
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Gender</Form.Label>
@@ -408,9 +408,7 @@ export default function Home() {
                         <input type="text" value={mathResponses} hidden/>
                         <input type="text" value={responses} hidden/>
                         
-                        <Button variant="primary" type="submit">
-                            Submit
-                        </Button>
+                        <button className="btn btn-primary" type="submit">Submit</button>
                         </form>
                     : ""}
                     
