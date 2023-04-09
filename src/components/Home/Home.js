@@ -387,7 +387,6 @@ export default function Home() {
                             {error && (
                             <p>Sorry, we could not reach our servers. Please try again later.</p>
                             )}
-                            <form name="info" method="POST">
                                 Thank you for completing the experiment. Please note that your submission will only be counted once you submit this form. Please provide the following demographic information for reporting purposes.
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
                                     <Form.Label>Gender</Form.Label>
@@ -418,7 +417,7 @@ export default function Home() {
                                 <input type="text" value={responses} hidden/>
                                 
                                 <button className="btn btn-primary" type="submit">Submit</button>
-                            </form>
+                            
                         </>
                         )}
                         </NetlifyForm>
