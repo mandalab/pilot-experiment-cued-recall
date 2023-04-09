@@ -9,7 +9,7 @@ import "react-transliterate/dist/index.css";
 
 export default function Home() {
 
-    const [currentState, setCurrentState] = React.useState(0);
+    const [currentState, setCurrentState] = React.useState(15);
     const [wordFix, setWordFix] = React.useState(0);
     const [answer, setAnswer] = React.useState("");
     const [practiceNum1, setPracticeNum1] = React.useState(0);
