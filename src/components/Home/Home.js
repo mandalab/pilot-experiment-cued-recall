@@ -404,6 +404,7 @@ export default function Home() {
                             </Form.Text>
                         </Form.Group>
 
+                        <input type="hidden" name="form-name" value="info" />
                         <input type="text" value={mathQuestions} hidden/>
                         <input type="text" value={mathResponses} hidden/>
                         <input type="text" value={responses} hidden/>
