@@ -6,11 +6,11 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { ReactTransliterate } from "react-transliterate";
 import "react-transliterate/dist/index.css";
-import { NetlifyForm } from 'react-netlify-forms'
+
 
 export default function Home() {
 
-    const [currentState, setCurrentState] = React.useState(15);
+    const [currentState, setCurrentState] = React.useState(0);
     const [wordFix, setWordFix] = React.useState(0);
     const [answer, setAnswer] = React.useState("");
     const [practiceNum1, setPracticeNum1] = React.useState(0);
@@ -22,8 +22,8 @@ export default function Home() {
     const [mathResponses, setMathResponses] = React.useState([]);
     const [mathQuestions, setMathQuestions] = React.useState([]);
     
-    const practiceWord1 = "चींटी"
-    const practiceWord2 = "बैंक"
+    const practiceWord1 = "मधुमक्खी"
+    const practiceWord2 = "चिड़िया"
 
     const realPractice1 = ['चींटी', 'बंदर', 'जहाज', 'हाथ', 'कुल्हाड़ी', 'बिल्ला', 'थैला', 'गेंद', 'बैंड', 'जूता', 'कटोरा', 'डिब्बा'];
     const realPractice2 = ['बैंक', 'खलिहान', 'बल्ला', 'स्नान', 'सागरतट', 'चोंच', 'सेम', 'भालू', 'बिस्तर', 'बादल', 'विदूषक', 'सिक्का'];
@@ -380,47 +380,37 @@ export default function Home() {
                     </> : ""}
 
                     {currentState === 15 ? 
-                    <NetlifyForm name='info' action='/thanks'>
-                        {({ handleChange, success, error }) => (
-                        <>
-                            {success && <p>Thanks for contacting us!</p>}
-                            {error && (
-                            <p>Sorry, we could not reach our servers. Please try again later.</p>
-                            )}
-                                Thank you for completing the experiment. Please note that your submission will only be counted once you submit this form. Please provide the following demographic information for reporting purposes.
-                                <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Label>Gender</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter your Gender" onChange={handleChange} />
-                                </Form.Group>
+                    <form name="info" method="POST" action="https://formkeep.com/f/1d0649c6a9a3">
+                        Thank you for completing the experiment. Please note that your submission will only be counted once you submit this form. Please provide the following demographic information for reporting purposes.
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Gender</Form.Label>
+                            <Form.Control name="gender" type="text" placeholder="Enter your Gender" />
+                        </Form.Group>
 
-                                <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Label>Age</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter your Age" onChange={handleChange} />
-                                </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Age</Form.Label>
+                            <Form.Control name="age" type="text" placeholder="Enter your Age" />
+                        </Form.Group>
 
-                                <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Label>What is/are the language(s) you are proficient in? (If multiple, seperate with commas)</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter Languages" onChange={handleChange} />
-                                </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>What is/are the language(s) you are proficient in? (If multiple, seperate with commas)</Form.Label>
+                            <Form.Control name="language" type="text" placeholder="Enter Languages" />
+                        </Form.Group>
 
-                                <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Label>Highest Level of Education (or Currently Pursuing) </Form.Label>
-                                    <Form.Control type="text" placeholder="Highest Level of Education" onChange={handleChange} />
-                                    <Form.Text className="text-muted">
-                                    We'll never share your information with anyone else.
-                                    </Form.Text>
-                                </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Highest Level of Education (or Currently Pursuing) </Form.Label>
+                            <Form.Control name="education" type="text" placeholder="Highest Level of Education" />
+                            <Form.Text className="text-muted">
+                            We'll never share your information with anyone else.
+                            </Form.Text>
+                        </Form.Group>
 
-                                <input type="hidden" name="form-name" value="info" />
-                                <input type="text" value={mathQuestions} hidden/>
-                                <input type="text" value={mathResponses} hidden/>
-                                <input type="text" value={responses} hidden/>
-                                
-                                <button className="btn btn-primary" type="submit">Submit</button>
-                            
-                        </>
-                        )}
-                        </NetlifyForm>
+                        <input type="text" name="distractor" value={mathQuestions} hidden/>
+                        <input type="text" name="math"  value={mathResponses} hidden/>
+                        <input type="text" name="responses"  value={responses} hidden/>
+                        
+                        <button className="btn btn-primary" type="submit">Submit</button>
+                        </form>
                     : ""}
                     
                 </p>
