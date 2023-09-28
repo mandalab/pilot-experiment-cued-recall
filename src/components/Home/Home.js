@@ -84,13 +84,17 @@ export default function Home() {
 
     const handleKeyPress = event => {
         const { key, keyCode } = event;
-        const value = key.length === 1 ? key : String.fromCharCode(keyCode);
-
-        if(keyCode>=48 && keyCode<=57){
-            setAnswer((prevInputValue) => prevInputValue + value)
+        // For backspace, the `key` will be 'Backspace' and `keyCode` will be 8
+        if (key === 'Backspace' || keyCode === 8) {
+            setAnswer((prevInputValue) => prevInputValue.slice(0, -1));
+        } else {
+            const value = key.length === 1 ? key : String.fromCharCode(keyCode);
+            if (keyCode >= 48 && keyCode <= 57) {
+                setAnswer((prevInputValue) => prevInputValue + value);
+            }
         }
-        
     };
+    
 
     React.useEffect(() => {
         setPracticeNum1(randomNumberInRange(1, 9))
