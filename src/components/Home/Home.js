@@ -101,11 +101,11 @@ export default function Home() {
         setPracticeNum2(randomNumberInRange(1, 9))
 
         // Add the event listener to the window object
-        window.addEventListener("keypress", handleKeyPress);
+        window.addEventListener("keydown", handleKeyPress);
 
         // Clean up the event listener when the component unmounts
         return () => {
-            window.removeEventListener("keypress", handleKeyPress);
+            window.removeEventListener("keydown", handleKeyPress);
         };
     }, []);
 
