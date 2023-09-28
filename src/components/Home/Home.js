@@ -10,7 +10,7 @@ import "react-transliterate/dist/index.css";
 
 export default function Home() {
 
-    const [currentState, setCurrentState] = React.useState(0);
+    const [currentState, setCurrentState] = React.useState(15);
     const [wordFix, setWordFix] = React.useState(0);
     const [answer, setAnswer] = React.useState("");
     const [practiceNum1, setPracticeNum1] = React.useState(0);
@@ -25,11 +25,55 @@ export default function Home() {
     const practiceWord1 = "मधुमक्खी"
     const practiceWord2 = "चिड़िया"
 
-    const realPractice1 = ['चींटी', 'बंदर', 'जहाज', 'हाथ', 'कुल्हाड़ी', 'बिल्ला', 'थैला', 'गेंद', 'बैंड', 'जूता', 'कटोरा', 'डिब्बा'];
-    const realPractice2 = ['बैंक', 'खलिहान', 'बल्ला', 'स्नान', 'सागरतट', 'चोंच', 'सेम', 'भालू', 'बिस्तर', 'बादल', 'विदूषक', 'सिक्का'];
+    const realPractice1 = ['ब्रश',
+    'पिंजरा',
+    'कोहरा',
+    'खिलौना',
+    'मंडल',
+    'घोड़ा',
+    'पौधा',
+    'मुँह',
+    'थैला',
+    'गेंद',
+    'मोज़ा',
+    'जूता'];
+    const realPractice2 = ['जाल',
+    'पहाड़',
+    'उल्लू',
+    'पिन',
+    'नाक',
+    'चावल',
+    'कुल्हाड़ी',
+    'झील',
+    'गुड़िया',
+    'चप्पू',
+    'गुलाब',
+    'घोंसला'];
     
-    const probes = ['चींटी','खलिहान','बल्ला','हाथ','कुल्हाड़ी','चोंच','थैला','भालू','बैंड', 'जूता', 'विदूषक', 'डिब्बा'];
-    const targets = ['बैंक','बंदर','जहाज','स्नान','सागरतट','बिल्ला','सेम','गेंद','बिस्तर', 'बादल', 'कटोरा', 'सिक्का'];
+    const probes = ['ब्रश',
+    'पहाड़',
+    'कोहरा',
+    'पिन',
+    'मंडल',
+    'घोड़ा',
+    'कुल्हाड़ी',
+    'मुँह',
+    'गुड़िया',
+    'चप्पू',
+    'मोज़ा',
+    'घोंसला'];
+    const targets = ['जाल',
+    'पिंजरा',
+    'उल्लू',
+    'खिलौना',
+    'नाक',
+    'चावल',
+    'पौधा',
+    'झील',
+    'थैला',
+    'गेंद',
+    'गुलाब',
+    'जूता'];
     
     const items = Array.from({ length: 6 }, (_, index) => index + 1);
     
