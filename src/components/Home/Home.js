@@ -248,7 +248,7 @@ export default function Home() {
                         First, you will have a <b>practice example</b> with <b>1 word pair</b>. <br/> 
                         This will take approximately <b> 5 minutes </b>. <br/>
                         This experiment works for users of Google Chrome, Safari, and Firefox (we do not support Internet Explorer). <br/> <br/>
-                        Please only participate if <b>Hindi</b> is your native language.
+                        
                         <br/><br/>
                         <Button variant="success" onClick={() => forwardState()}>Proceed</Button>{' '}
                     </> : ""}
