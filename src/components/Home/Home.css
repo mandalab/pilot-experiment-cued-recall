@@ -25,3 +25,69 @@
     background-color: green;
     transition: width 0.5s ease-in-out;
   }
+
+  .likert-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.likert-label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    user-select: none;
+    transition: all 0.3s;
+}
+
+.likert-input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.likert-box {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+    border: 2px solid #dcdcdc;
+    transition: all 0.3s;
+}
+
+.likert-input:checked ~ .likert-box {
+    background-color: #2196F3;
+    border-color: #2196F3;
+}
+
+.likert-box:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.likert-input:checked ~ .likert-box:after {
+    display: block;
+}
+
+.likert-label:hover input ~ .likert-box {
+    background-color: #ccc;
+}
+
+.likert-box:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
