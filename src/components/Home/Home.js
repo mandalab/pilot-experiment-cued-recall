@@ -592,7 +592,14 @@ export default function Home() {
                 <p>
                     {currentState === -1 ? 
                     <div class="container">
-                        <form>
+                        <form className="pt-5">
+                            <div className="mt-5">
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Native Language:</Form.Label>
+                                <input type="text" name="nativeLanguage" value={formState.nativeLanguage} onChange={handleChangeProficiency} />
+                                {/* <Form.Control name="native" type="text" value={formState.nativeLanguage} onChange={handleChange} /> */}
+                            </Form.Group>
+                            </div>
 
 
                             <div>
