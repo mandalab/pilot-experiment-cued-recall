@@ -276,7 +276,7 @@ export default function Home() {
     React.useEffect(() => {
         const allocateParticipant = async () => {
           
-          const response = await fetch('https://16.170.238.174:5000/api/participants/allocate');
+          const response = await fetch('https://prajneya.in/api/participants/allocate');
           if (!response.ok) {
             console.log('No available participant IDs.');
             return;
@@ -342,7 +342,7 @@ export default function Home() {
         console.log(formData)
         console.log(formProps)
         try {
-          const response = await fetch('https://16.170.238.174:5000/api/survey', {
+          const response = await fetch('https://prajneya.in/api/survey', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
