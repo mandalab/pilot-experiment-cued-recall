@@ -591,14 +591,9 @@ export default function Home() {
             <div className='text-center'>Your Participant ID is: {participantData.participantID ? participantData.participantID.split("_")[1] : ""}</div>
                 <p>
                     {currentState === -1 ? 
-                    <>
+                    <div class="container">
                         <form>
 
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Label>Native Language:</Form.Label>
-                                <input type="text" name="nativeLanguage" value={formState.nativeLanguage} onChange={handleChangeProficiency} />
-                                {/* <Form.Control name="native" type="text" value={formState.nativeLanguage} onChange={handleChange} /> */}
-                            </Form.Group>
 
                             <div>
                                 <label>Reading Skills in Hindi:</label>
@@ -623,7 +618,7 @@ export default function Home() {
                             }
                             </div>
                             </form>
-                    </> : ""}
+                    </div> : ""}
 
                     {currentState === 0 ? 
                     <>
