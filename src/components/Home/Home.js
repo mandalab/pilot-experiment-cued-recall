@@ -819,7 +819,7 @@ export default function Home() {
                     <form name="info" onSubmit={handleSubmit}>
                         Thank you for completing the experiment. Please note that your submission will only be counted once you submit this form. Please provide the following demographic information for reporting purposes.
                         <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>IIIT Roll Number</Form.Label>
+                            <Form.Label>IIIT Roll Number (if you are not affiliated to IIIT, please leave this field blank)</Form.Label>
                             <Form.Control name="roll" type="text" placeholder="Enter your IIIT roll" autoComplete="off" />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicEmail">

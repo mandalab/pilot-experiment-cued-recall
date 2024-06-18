@@ -83,3 +83,12 @@ app.post('/api/participants', async (req, res) => {
       res.status(500).json({ message: err.message });
     }
   });
+
+app.get('/api/getRawData', async (req, res) => {
+    try {
+        const surveys = await Survey.find(); // This retrieves all documents in the 'surveys' collection
+        res.json(surveys);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
