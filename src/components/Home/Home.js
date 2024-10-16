@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, {useMemo, useState, useEffect} from 'react';
 
 import './Home.css'
 
@@ -12,6 +12,15 @@ import "react-transliterate/dist/index.css";
 export default function Home() {
 
     const [show, setShow] = React.useState(false);
+    const [GMOID, setGMOId] = useState('');
+
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const idParam = params.get('id');
+        if (idParam) {
+            setGMOId(idParam);
+        }
+    }, []);
 
     const handleClose = () => {
         setShow(false)
@@ -353,6 +362,8 @@ export default function Home() {
           if (response.ok) {
             const data = await response.json();
             console.log('Survey data saved successfully:', data);
+            const targetUrl = `https://infopanel.jp/lpark/enqInfoUpdateForNC.do?status=1&id=${GMOID}`;
+            window.location.href = targetUrl;
             handleShow()
           } else {
             console.error('Failed to save survey data');
@@ -363,7 +374,7 @@ export default function Home() {
       };
     
 
-    const [currentState, setCurrentState] = React.useState(-1);
+    const [currentState, setCurrentState] = React.useState(15);
     const [wordFix, setWordFix] = React.useState(0);
     const [answer, setAnswer] = React.useState("");
     const [practiceNum1, setPracticeNum1] = React.useState(0);

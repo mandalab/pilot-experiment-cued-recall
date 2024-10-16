@@ -24,3 +24,5 @@ yarn-error.log*
 
 /backend
 /testruns
+backend.zip
+testruns.zip
