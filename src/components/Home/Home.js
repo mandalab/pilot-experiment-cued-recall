@@ -349,7 +349,9 @@ export default function Home() {
         const formData = new FormData(event.target);
         const formProps = Object.fromEntries(formData);
         formProps.gmoid = GMOID;
+        
         try {
+          console.log(formProps)
           const response = await fetch('https://prajneya.in/api/survey', {
             method: 'POST',
             headers: {

@@ -92,3 +92,12 @@ app.get('/api/getRawData', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+app.get('/api/participants/incomplete-count', async (req, res) => {
+  try {
+    const count = await Participant.countDocuments({ completed: false });
+    res.json({ incompleteCount: count });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
