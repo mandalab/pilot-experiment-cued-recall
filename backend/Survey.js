@@ -11,8 +11,10 @@ const surveySchema = new mongoose.Schema({
   gender: String,
   language: String,
   education: String,
-  roll: String
+  roll: String,
+  gmoid: String
 });
+
 
 const Survey = mongoose.model('Survey', surveySchema);
 
